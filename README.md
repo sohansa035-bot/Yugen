@@ -5,8 +5,6 @@
 
 **Edge AI • Robotics • Computer Vision • IoT**
 
-<img src="assets/hero.png" width="800" alt="Yugēn Hero Banner">
-
 </div>
 
 ---
@@ -53,10 +51,6 @@ Instead of fixed security cameras with inevitable blind spots, Yugēn proposes a
 
 ## 🏗️ System Architecture
 
-<div align="center">
-  <img src="assets/architecture.png" width="600" alt="Architecture Diagram">
-</div>
-
 ```text
               Web Dashboard
                      │
@@ -80,6 +74,11 @@ YOLO + Face Recognition
 
 ## 📸 Visual Gallery
 
+> **Images Pending**: To display your rover photos here, please save the pictures you uploaded to chat into your `assets/` folder as `rover_front.jpg` and `rover_side.jpg`.
+> 
+> *(Once you add the files to the folder, remove the `<!--` and `-->` below to reveal them!)*
+
+<!--
 <p align="center">
   <img src="assets/rover_front.jpg" width="45%" alt="Real Rover Front">
   <img src="assets/rover_side.jpg" width="45%" alt="Real Rover Side">
@@ -88,8 +87,7 @@ YOLO + Face Recognition
   <img src="assets/dashboard.png" width="45%" alt="Dashboard View">
   <img src="assets/detection.png" width="45%" alt="Detection Demo">
 </p>
-
-*(Note: These images rely on files placed in the `assets/` folder. Please ensure the photos you took are saved exactly as `assets/rover_front.jpg` and `assets/rover_side.jpg`)*
+-->
 
 ---
 
