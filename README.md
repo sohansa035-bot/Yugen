@@ -5,6 +5,8 @@
 
 **Edge AI • Robotics • Computer Vision • IoT**
 
+*A modular robotics platform for exploring edge AI, autonomous navigation, and intelligent surveillance.*
+
 <img src="media/hero.png" width="800" alt="Yugēn Hero Banner">
 
 </div>
@@ -16,6 +18,8 @@
 Yugēn is a modular robotics research platform exploring edge AI, computer vision, and autonomous surveillance.
 
 Instead of fixed security cameras with inevitable blind spots, Yugēn proposes a mobile, AI-enabled approach by combining robotics, edge computing, and real-time vision into a flexible platform.
+
+Yugēn is designed as a modular platform where perception, mobility, and intelligence can evolve independently, making it suitable for research, rapid prototyping, and future autonomous robotics applications.
 
 ---
 
@@ -53,23 +57,69 @@ Instead of fixed security cameras with inevitable blind spots, Yugēn proposes a
 
 ## 🏗️ System Architecture
 
+### Hardware Architecture
 ```text
-              Web Dashboard
-                     │
-             WebSocket / HTTP
-                     │
-          ┌───────────────────┐
-          │      ESP32        │
-          └───────────────────┘
-      ┌────────┬────────┬────────┐
-      │        │        │        │
-   Camera Motor Ctrl Sensors Telemetry
-      │
- Video Stream
-      │
-AI Processing (Python)
-      │
-YOLO + Face Recognition
+                  Web Dashboard
+                         │
+              HTTP / WebSocket
+                         │
+        ┌─────────────────────────┐
+        │      ESP32 Controller   │
+        └─────────────────────────┘
+           │        │         │
+           │        │         │
+      Camera    Motor Ctrl  Sensors
+           │
+      Video Stream
+           │
+      AI Processing (Python)
+           │
+ ┌─────────┴─────────┐
+ │                   │
+YOLO Detection   Face Recognition
+           │
+      Event & Alerts
+```
+
+### Software Pipeline
+```text
+Dashboard
+    │
+    ▼
+Video Receiver
+    │
+    ▼
+Frame Processing
+    │
+    ▼
+YOLOv8 Inference
+    │
+    ▼
+Face Recognition
+    │
+    ▼
+Detection Manager
+    │
+    ▼
+Web Dashboard UI
+    │
+    ▼
+Event Recording
+```
+
+---
+
+## 📁 Repository Structure
+
+```text
+Yugen/
+├── ai/                 # Computer vision models and training scripts
+├── dashboard/          # Python AI inference and UI backend
+├── firmware/           # ESP32 C++ code for motors and camera
+├── hardware/           # Schematics and PCB designs
+├── media/              # Visual assets, gallery images, and banners
+├── README.md           # Documentation
+└── requirements.txt    # Python dependencies
 ```
 
 ---
@@ -93,32 +143,34 @@ YOLO + Face Recognition
 
 ## ⚙️ Hardware Specifications
 
-| Component | Description |
+| Component | Description | Purpose |
+| :--- | :--- | :--- |
+| **ESP32 DevKit** | Microcontroller | Motion Control & Logic |
+| **ESP32-CAM** | Camera Module | Video Streaming |
+| **Dual L298N** | Motor Driver | High-Current Motor Control |
+| **4 × DC Motors** | Actuators | Omnidirectional Movement |
+| **Mecanum Wheels** | Wheels | Lateral Strafing & Rotation |
+| **Custom Li-ion** | Power Supply | 12V High-Capacity Delivery |
+| **Wi-Fi** | Connectivity | Wireless Telemetry & Control |
+
+---
+
+## 🛠️ Technology Stack
+
+| Layer | Technology |
 | :--- | :--- |
-| **Controller** | ESP32 DevKit |
-| **Camera** | ESP32-CAM |
-| **Motor Driver** | 2x L298N Dual H-Bridge |
-| **Motors** | 4 × DC Gear Motors |
-| **Wheels** | Mecanum |
-| **Power** | Custom Li-ion Battery Pack |
-| **Connectivity** | Wi-Fi (802.11 b/g/n) |
+| **Firmware** | Arduino C++ |
+| **AI** | YOLOv8, OpenCV |
+| **Vision** | `face_recognition`, dlib |
+| **Backend** | Python |
+| **Communication**| WebSocket, HTTP |
+| **Hardware** | ESP32, ESP32-CAM |
 
 ---
 
 ## 📈 System Metrics
 
-| Property | Value |
-| :--- | :--- |
-| **Platform** | ESP32 |
-| **AI Model** | YOLOv8 (Nano/Small) |
-| **Programming** | C++, Python |
-| **Vision** | OpenCV, dlib |
-| **Communication**| WebSockets, Serial |
-| **Control** | Wi-Fi |
-| **Drive** | Omnidirectional (Mecanum) |
-| **Status** | Research Prototype |
-
-### Performance Estimates
+### Expected Performance (Prototype)
 | Metric | Value |
 | :--- | :--- |
 | **Camera FPS** | ~15-20 FPS |
@@ -140,6 +192,11 @@ YOLO + Face Recognition
 * **Real-time inference**: Best balance of speed and accuracy for edge devices.
 * **Widely adopted**: Excellent community support and pre-trained weights.
 * **Good accuracy**: Reliable detection for humans and vehicles in varied lighting.
+
+### Why WebSockets?
+* **Low latency**: Persistent bi-directional connection.
+* **Efficient**: Significantly lower overhead than repeated HTTP polling.
+* **Real-time control**: Ideal for immediate robotic actuation and live video streaming.
 
 ### Why Python Dashboard?
 * **Rapid development**: Fast iteration for UI and backend logic.
@@ -194,12 +251,23 @@ V4
 
 ---
 
+## 🔬 Future Research Directions
+
+Beyond the current roadmap, Yugēn is built to explore advanced robotics concepts:
+* **Edge AI Optimization**: Moving YOLO inference directly to an Edge TPU onboard the rover.
+* **Sensor Fusion**: Combining LiDAR, ultrasonics, and vision for high-fidelity spatial awareness.
+* **Autonomous Navigation**: Path planning in dynamic, uncharted environments.
+* **Multi-Agent Robotics**: Coordinated swarm mapping and perimeter defense.
+* **Energy-Efficient Patrol**: AI-driven algorithms to optimize patrol routes based on battery constraints.
+
+---
+
 ## 🚀 Installation & Getting Started
 
 1. **Firmware Deployment**: Flash `firmware/motor_control/esp32_car.ino` and `firmware/camera/esp32_camera_car.ino` to their respective ESP32 modules.
 2. **AI Setup**: 
    ```bash
-   pip install opencv-python ultralytics face_recognition websocket-client
+   pip install -r requirements.txt
    ```
 3. **Run Dashboard**: 
    ```bash
@@ -208,4 +276,4 @@ V4
 
 ---
 
-*Yugēn — Designed for the future of decentralized autonomous surveillance.*
+*Yugēn is an ongoing robotics research platform exploring edge AI, computer vision, and autonomous surveillance through modular engineering and continuous iteration.*
