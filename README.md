@@ -78,6 +78,12 @@ Yugēn provides an autonomous, omnidirectional rover equipped with real-time com
 ---
 
 ## ⚙️ Hardware Overview
+
+<p align="center">
+  <img src="assets/rover_front.jpg" width="45%" alt="Yugēn Rover Front View">
+  <img src="assets/rover_side.jpg" width="45%" alt="Yugēn Rover Side View">
+</p>
+
 * **Microcontroller**: ESP32 / ESP32-CAM (Edge Processing & Comm)
 * **Motor Drivers**: 2x L298N Dual H-Bridge
 * **Actuators**: 4x DC Gear Motors with Mecanum Wheels
