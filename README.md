@@ -1,55 +1,196 @@
-# CarAI: Smart Car AI Surveillance System
+<div align="center">
 
-A professional, real-time AI dashboard and surveillance system designed for a smart car equipped with an ESP32 Camera. This system integrates WebSocket video streaming, YOLOv8 object detection, and high-accuracy face recognition.
+# YUGĒN
+### Autonomous Intelligent Surveillance Platform
 
-## Photos
-*(Insert high-quality photos of the completed smart car, dashboard interface, and real-world testing here.)*
-- `[Dashboard UI Screenshot]`
-- `[Smart Car Front View]`
-- `[Smart Car Side View]`
+**Edge AI • Robotics • Computer Vision • IoT**
 
-## PCB / Wiring
-The hardware is built on a custom wooden chassis using a 4-wheel omnidirectional drive system.
-- **Microcontroller**: ESP32-CAM module mounted on an expansion board for easy wiring and video streaming.
-- **Chassis & Wheels**: Custom wooden base with 4x yellow Mecanum wheels for omnidirectional movement.
-- **Power**: Custom yellow Li-ion battery pack providing power to both the motors and the microcontroller.
-- **Motor Drivers**: Dual L298N motor drivers (red boards) controlling the 4 DC gear motors independently.
+</div>
 
-## ESP32 Code
-The ESP32 acts as a WebSocket video server and motor controller.
-- **Video Streaming**: Captures JPEG frames and streams them over a WebSocket (`ws://[ESP32_IP]/Camera`).
-- **Control**: Receives commands from the dashboard for movement.
-The source code is available in [esp32_camera_car.ino](esp32_camera_car.ino).
+---
 
-## AI Model
-The AI Dashboard (`ai_dashboard_pro.py`) runs on the host PC and processes the video stream in real-time.
-- **Object Detection**: Utilizes **YOLOv8** (Nano/Small models) for real-time detection of people, vehicles, and other objects.
-- **Face Recognition**: Integrates `face_recognition` (dlib) for matching detected faces against a known database (`known_faces/` directory).
-- **Optimization**: Uses a dedicated background thread (`_ai_worker`) and caching mechanism to ensure the display frame rate remains smooth even during heavy inference.
+## 📖 Vision
 
-## Demo Video
-*(Link to a YouTube or hosted video demonstrating the car navigating, detecting objects, and recognizing faces in real-time.)*
-- [Watch the Demo on YouTube](#)
+Modern surveillance systems are often fixed, expensive, and unable to adapt to changing environments. Yugēn explores a mobile, AI-enabled approach by combining robotics, edge computing, and computer vision into a modular surveillance platform. 
 
-## Cost
-| Component | Estimated Cost (USD) |
-| :--- | :--- |
-| ESP32-CAM Module | $5 - $10 |
-| Custom Wooden Chassis & 4x Mecanum Wheels | $20 - $30 |
-| Dual Motor Drivers (L298N x2) | $6 - $10 |
-| Li-ion Battery Pack | $10 - $15 |
-| Jumper Wires & Hardware | $5 |
-| **Total Estimated Cost** | **$46 - $70** |
+Yugēn is a modular robotics platform for exploring autonomous surveillance, edge AI, and intelligent remote operations.
 
-## Challenges
-1. **WebSocket Latency**: Tuning the frame resolution and compression on the ESP32 to prevent network bottlenecks and latency during streaming.
-2. **AI Inference Bottlenecks**: Running YOLOv8 and Face Recognition synchronously caused the video feed to lag.
-   * **Solution**: Implemented a multi-threaded architecture with a dedicated `_ai_worker` thread and caching system to decouple display FPS from inference FPS.
-3. **Face Recognition Reliability**: Handling varying lighting conditions and angles.
-   * **Solution**: Added logic to first detect a `person` bounding box, then perform facial recognition within that area, coloring the box yellow if a face couldn't be clearly matched.
+---
 
-## Future Roadmap
-- [ ] **Autonomous Navigation**: Implement SLAM (Simultaneous Localization and Mapping) or line-tracking for autonomous patrols.
-- [ ] **Cloud Integration**: Push detection events and evidence recordings to an AWS S3 bucket or a Telegram bot.
-- [ ] **Voice Commands**: Add a microphone module to the car or dashboard for voice-activated controls.
-- [ ] **Edge AI**: Migrate lightweight object detection directly to an Edge TPU or a more powerful microcontroller (e.g., Raspberry Pi 5) mounted on the car.
+## 🎯 Problem
+Traditional security cameras are limited by their field of view. Blind spots are inevitable, and dynamic situations require flexible monitoring solutions that fixed cameras cannot provide.
+
+## 💡 Solution
+Yugēn provides an autonomous, omnidirectional rover equipped with real-time computer vision. By leveraging edge AI and modular robotics, it can patrol, detect events, and adapt to its environment autonomously.
+
+---
+
+## 🚀 Capabilities
+
+### Autonomous Mobility
+* **Differential/Omnidirectional Drive**: 4-wheel Mecanum drive for complex maneuvering.
+* **Path Navigation**: Foundation for SLAM and point-to-point routing.
+* **Obstacle Avoidance**: Future integration of depth sensing.
+* **Remote Override**: Instant manual control via low-latency WebSocket.
+
+### Computer Vision
+* **Live Video Streaming**: Real-time MJPEG/JPEG streaming from ESP32-CAM.
+* **Object Detection**: YOLOv8-powered person and vehicle tracking.
+* **Motion Detection**: Frame-by-frame analysis for anomaly detection.
+* **Facial Recognition**: Integrated `dlib` facial matching for known entities.
+
+### Remote Operations
+* **Web Dashboard**: Centralized Python/OpenCV control center.
+* **Telemetry**: Real-time FPS, network latency, and connection status.
+* **Event Recording**: Automated video evidence capture.
+* **OTA Updates**: Ready for over-the-air firmware upgrades.
+
+### Edge Intelligence
+* **On-device Processing**: Distributed workload between rover and host.
+* **Event Detection**: Multi-threaded AI inference without dropping frame rates.
+* **Sensor Fusion**: (Roadmap) Combining vision with IMU data.
+
+---
+
+## 🏗️ System Architecture
+
+```text
+          AI Dashboard (Host PC)
+                │
+        Wi-Fi (WebSockets / Serial)
+                │
+      ┌────────────────────┐
+      │      ESP32         │
+      │ Motor Controller   │
+      │ Video Streaming    │
+      │ Telemetry Engine   │
+      └────────────────────┘
+          │          │
+     Camera       Motors (L298N)
+          │
+      AI Processing
+          │
+     Detection Events
+          │
+     Video Evidence
+```
+
+---
+
+## ⚙️ Hardware Overview
+* **Microcontroller**: ESP32 / ESP32-CAM (Edge Processing & Comm)
+* **Motor Drivers**: 2x L298N Dual H-Bridge
+* **Actuators**: 4x DC Gear Motors with Mecanum Wheels
+* **Power**: Custom Li-ion battery pack
+
+---
+
+## 💻 Software Stack
+* **AI & Vision**: OpenCV, YOLOv8 (Ultralytics), `face_recognition` (dlib)
+* **Backend**: Python, WebSockets, NumPy
+* **Firmware**: C++ / Arduino Core (ESP32)
+
+---
+
+## 📊 Development Status
+
+| Feature | Status |
+| :--- | :---: |
+| Rover Chassis | ✅ |
+| Motor Control | ✅ |
+| Camera Streaming | ✅ |
+| Remote Control | ✅ |
+| Edge AI Detection | 🚧 |
+| Autonomous Navigation | 🚧 |
+| Multi-Robot Swarm | 📅 |
+| Docking Station | 📅 |
+| SLAM Mapping | 📅 |
+
+---
+
+## 🧠 Engineering Decisions
+
+### Why ESP32?
+* **Low power**: Ideal for battery-operated rovers.
+* **Wi-Fi built-in**: Essential for live video telemetry and remote commands.
+* **Large community**: Robust libraries for motor PWM and WebSockets.
+
+### Why Edge AI?
+* **Lower latency**: Processing on local networks avoids cloud round-trip times.
+* **Better privacy**: Video data never leaves the local environment unless explicitly exported.
+* **Reduced bandwidth**: Only alerts and compressed evidence need external transmission.
+
+### Why Modular Design?
+Allows replacing the camera, sensors, or AI models independently without rewriting the core motor control or dashboard architectures.
+
+---
+
+## 📁 Repository Structure
+
+```text
+Yugen/
+├── assets/                  # Project screenshots and diagrams
+├── docs/                    # Architectural documentation
+├── firmware/
+│   ├── motor_control/       # ESP32 Motor Command Listener
+│   ├── camera/              # ESP32-CAM WebSocket Streaming
+│   └── navigation/          # (Planned) Autonomous navigation logic
+├── ai/
+│   ├── vision/              # YOLOv8 weights and vision models
+│   └── tracking/            # (Planned) Multi-object tracking logic
+├── dashboard/
+│   ├── backend/             # Main AI Surveillance Dashboard
+│   └── frontend/            # (Planned) Web UI
+├── mobile/                  # (Planned) Mobile remote control app
+├── hardware/                
+│   ├── cad/                 # 3D printable chassis components
+│   └── wiring/              # Fritzing / Circuit diagrams
+├── tests/                   # Unit and integration tests
+├── known_faces/             # Database of authorized entities
+├── recordings/              # Automated video evidence captures
+└── README.md
+```
+
+---
+
+## 🚀 Getting Started
+
+1. **Firmware Deployment**: Flash `firmware/motor_control/esp32_car.ino` and `firmware/camera/esp32_camera_car.ino` to their respective ESP32 modules.
+2. **AI Setup**: 
+   ```bash
+   pip install opencv-python ultralytics face_recognition websocket-client
+   ```
+3. **Run Dashboard**: 
+   ```bash
+   python dashboard/backend/ai_dashboard_pro.py
+   ```
+
+---
+
+## 🗺️ Roadmap
+
+### Version 1 (Current)
+* Manual control, live stream, AI object/face detection dashboard.
+
+### Version 2
+* Obstacle avoidance using ultrasonic/LiDAR, automated event recording.
+
+### Version 3
+* Autonomous patrol, point-to-point route planning, and AI alerts (Telegram/AWS).
+
+### Version 4
+* Swarm robotics, edge AI optimization directly on the rover (Edge TPU), mapping.
+
+---
+
+## 🔬 Research Inspiration
+Inspired by developments in:
+* Autonomous robotics & Swarm logic
+* Edge AI computation
+* Advanced Computer Vision
+* Intelligent Surveillance Systems
+* Human–Robot Interaction
+
+---
+
+*Designed for the future of decentralized autonomous surveillance.*

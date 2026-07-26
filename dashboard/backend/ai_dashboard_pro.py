@@ -20,7 +20,7 @@ logging.basicConfig(
 logger = logging.getLogger("CarDashboard")
 
 class SmartCarSystem:
-    def __init__(self, ip_address, model_type="yolov8n.pt", confidence=0.60, frame_skip=3, face_tolerance=0.50):
+    def __init__(self, ip_address, model_type="ai/vision/yolov8n.pt", confidence=0.60, frame_skip=3, face_tolerance=0.50):
         """
         Initialize the AI Surveillance System.
         """
@@ -350,7 +350,7 @@ if __name__ == "__main__":
     CAR_IP = "192.168.4.1"
     system = SmartCarSystem(
         ip_address=CAR_IP,
-        model_type="yolov8n.pt",
+        model_type="ai/vision/yolov8n.pt",
         confidence=0.50,
         frame_skip=3,
         face_tolerance=0.50
