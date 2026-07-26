@@ -77,12 +77,16 @@ YOLO + Face Recognition
 ## 📸 Visual Gallery
 
 <p align="center">
-  <img src="assets/dashboard.png" width="800" alt="Dashboard View">
+  <img src="assets/rover_top.jpg" width="45%" alt="Rover Top View">
+  <img src="assets/rover_front.jpg" width="45%" alt="Rover Front View">
+</p>
+<p align="center">
+  <img src="assets/rover_side.jpg" width="45%" alt="Rover Side View">
+  <img src="assets/rover_angle.jpg" width="45%" alt="Rover Angle View">
 </p>
 
 <p align="center">
-  <img src="assets/rover_front.jpg" width="45%" alt="Real Rover Front">
-  <img src="assets/rover_side.jpg" width="45%" alt="Real Rover Side">
+  <img src="assets/dashboard.png" width="800" alt="Dashboard View">
 </p>
 
 ---
