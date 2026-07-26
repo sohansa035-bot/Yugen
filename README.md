@@ -5,7 +5,7 @@
 
 **Edge AI • Robotics • Computer Vision • IoT**
 
-<img src="assets/hero.png" width="800" alt="Yugēn Hero Banner">
+<img src="media/hero.png" width="800" alt="Yugēn Hero Banner">
 
 </div>
 
@@ -77,16 +77,16 @@ YOLO + Face Recognition
 ## 📸 Visual Gallery
 
 <p align="center">
-  <img src="assets/rover_top.jpg" width="45%" alt="Rover Top View">
-  <img src="assets/rover_front.jpg" width="45%" alt="Rover Front View">
+  <img src="media/rover_top.jpg" width="45%" alt="Rover Top View">
+  <img src="media/rover_front.jpg" width="45%" alt="Rover Front View">
 </p>
 <p align="center">
-  <img src="assets/rover_side.jpg" width="45%" alt="Rover Side View">
-  <img src="assets/rover_angle.jpg" width="45%" alt="Rover Angle View">
+  <img src="media/rover_side.jpg" width="45%" alt="Rover Side View">
+  <img src="media/rover_angle.jpg" width="45%" alt="Rover Angle View">
 </p>
 
 <p align="center">
-  <img src="assets/dashboard.png" width="800" alt="Dashboard View">
+  <img src="media/dashboard.png" width="800" alt="Dashboard View">
 </p>
 
 ---
