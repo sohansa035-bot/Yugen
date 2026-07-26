@@ -80,16 +80,10 @@ YOLO + Face Recognition
   <img src="assets/dashboard.png" width="800" alt="Dashboard View">
 </p>
 
-> **Rover Photos Pending**: To display the physical photos of your car, please save the pictures you uploaded to this chat into your `assets/` folder as `rover_front.jpg` and `rover_side.jpg`.
-> 
-> *(Once you add them to the folder, remove the `<!--` and `-->` below to reveal them!)*
-
-<!--
 <p align="center">
   <img src="assets/rover_front.jpg" width="45%" alt="Real Rover Front">
   <img src="assets/rover_side.jpg" width="45%" alt="Real Rover Side">
 </p>
--->
 
 ---
 
