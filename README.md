@@ -5,7 +5,7 @@
 
 **Edge AI • Robotics • Computer Vision • IoT**
 
-<img src="assets/rover_front.jpg" width="400" alt="Minimal Rover Illustration">
+<img src="assets/hero.png" width="800" alt="Yugēn Hero Banner">
 
 </div>
 
@@ -13,130 +13,121 @@
 
 ## 📖 Vision
 
-Modern surveillance systems are often fixed, expensive, and unable to adapt to changing environments. Yugēn explores a mobile, AI-enabled approach by combining robotics, edge computing, and computer vision into a modular surveillance platform. 
+Yugēn is a modular robotics research platform exploring edge AI, computer vision, and autonomous surveillance.
 
-**Yugēn — A Modular Edge AI Robotics Platform for Autonomous Surveillance**
-
----
-
-## ❓ Why Yugēn?
-Traditional security cameras are limited by their field of view. Blind spots are inevitable, and dynamic situations require flexible monitoring solutions that fixed cameras cannot provide. Yugēn provides an autonomous, omnidirectional rover equipped with real-time computer vision to patrol, detect events, and adapt to its environment autonomously.
+Instead of fixed security cameras with inevitable blind spots, Yugēn proposes a mobile, AI-enabled approach by combining robotics, edge computing, and real-time vision into a flexible platform.
 
 ---
 
-## 🚀 Features
+## 📊 Repository Status
 
-### Vision
-* **Live Stream**: Real-time MJPEG/JPEG streaming from ESP32-CAM.
-* **Object Detection**: YOLOv8-powered person and vehicle tracking.
+| Module | Status |
+| :--- | :--- |
+| 🟢 Hardware Prototype | Completed |
+| 🟢 Manual Control | Completed |
+| 🟢 AI Dashboard | Completed |
+| 🟢 Camera Streaming | Completed |
+| 🟡 AI Optimization | In Progress |
+| 🟡 Autonomous Patrol | In Progress |
+| ⚪ SLAM Mapping | Planned |
+| ⚪ Multi-Robot Swarm | Planned |
+
+---
+
+## 🚀 Capabilities
+
+### ✅ Current Capabilities
+* **Live Camera Streaming**: Real-time MJPEG/JPEG streaming from ESP32-CAM.
+* **Web Dashboard**: Centralized Python/OpenCV control center.
+* **Manual Control**: Low-latency WebSocket integration for remote piloting.
+* **YOLO Detection**: YOLOv8-powered person and vehicle tracking.
 * **Face Recognition**: Integrated `dlib` facial matching for known entities.
 
-### Navigation
-* **Remote Control**: Instant manual control via low-latency WebSocket.
-* **Obstacle Avoidance**: Future integration of depth sensing.
-* **Speed Control**: Dynamic PWM motor adjustment.
-
-### Connectivity
-* **Wi-Fi**: Wireless telemetry and streaming.
-* **Web Dashboard**: Centralized Python/OpenCV control center.
-* **OTA Updates**: Ready for over-the-air firmware upgrades.
-
-### Intelligence
-* **YOLO Detection**: Multi-threaded AI inference without dropping frame rates.
-* **Motion Detection**: Frame-by-frame analysis for anomaly detection.
-* **AI Alerts**: Automated video evidence capture and logging.
+### 🚧 Planned Features
+* **Obstacle Avoidance**: Integration of depth/ultrasonic sensing.
+* **Autonomous Patrol**: Point-to-point route planning.
+* **SLAM**: Simultaneous Localization and Mapping.
+* **Multi-Robot Coordination**: Swarm logic for distributed surveillance.
 
 ---
 
 ## 🏗️ System Architecture
 
+<div align="center">
+  <img src="assets/architecture.png" width="600" alt="Architecture Diagram">
+</div>
+
 ```text
-            Dashboard
-                 │
-        WiFi / WebSocket
-                 │
-────────────────────────────────
-        Communication Layer
-────────────────────────────────
-                 │
-      ESP32 Main Controller
-                 │
- ┌─────────┬─────────┬─────────┐
- │         │         │         │
-Vision  Navigation Telemetry Motors
- │         │         │         │
-Camera Ultrasonic  Logs     PWM
+              Web Dashboard
+                     │
+             WebSocket / HTTP
+                     │
+          ┌───────────────────┐
+          │      ESP32        │
+          └───────────────────┘
+      ┌────────┬────────┬────────┐
+      │        │        │        │
+   Camera Motor Ctrl Sensors Telemetry
+      │
+ Video Stream
+      │
+AI Processing (Python)
+      │
+YOLO + Face Recognition
 ```
 
 ---
 
-## ⚙️ Hardware
-
-### Wiring Diagram
-```text
-ESP32
-  ↓
-Camera & Serial Comms
-  ↓
-L298N Motor Drivers
-  ↓
-Left & Right Motors (Mecanum)
-  ↓
-Ultrasonic (Planned)
-  ↓
-Li-ion Power Distribution
-```
+## 📸 Visual Gallery
 
 <p align="center">
-  <img src="assets/rover_front.jpg" width="45%" alt="Yugēn Rover Front View">
-  <img src="assets/rover_side.jpg" width="45%" alt="Yugēn Rover Side View">
+  <img src="assets/rover_front.jpg" width="45%" alt="Real Rover Front">
+  <img src="assets/rover_side.jpg" width="45%" alt="Real Rover Side">
+</p>
+<p align="center">
+  <img src="assets/dashboard.png" width="45%" alt="Dashboard View">
+  <img src="assets/detection.png" width="45%" alt="Detection Demo">
 </p>
 
-* **Microcontroller**: ESP32 / ESP32-CAM
-* **Motor Drivers**: 2x L298N Dual H-Bridge
-* **Actuators**: 4x DC Gear Motors with Mecanum Wheels
-* **Power**: Custom Li-ion battery pack
+*(Note: These images rely on files placed in the `assets/` folder. Please ensure the photos you took are saved exactly as `assets/rover_front.jpg` and `assets/rover_side.jpg`)*
 
 ---
 
-## 💻 Software Stack
-* **AI & Vision**: OpenCV, YOLOv8 (Ultralytics), `face_recognition` (dlib)
-* **Backend**: Python, WebSockets, NumPy
-* **Firmware**: C++ / Arduino Core (ESP32)
+## ⚙️ Hardware Specifications
+
+| Component | Description |
+| :--- | :--- |
+| **Controller** | ESP32 DevKit |
+| **Camera** | ESP32-CAM |
+| **Motor Driver** | 2x L298N Dual H-Bridge |
+| **Motors** | 4 × DC Gear Motors |
+| **Wheels** | Mecanum |
+| **Power** | Custom Li-ion Battery Pack |
+| **Connectivity** | Wi-Fi (802.11 b/g/n) |
 
 ---
 
-## 🎥 Demo
-*(Link to `assets/demo.gif` or YouTube video showing the Yugēn dashboard and rover in action)*
+## 📈 System Metrics
 
----
+| Property | Value |
+| :--- | :--- |
+| **Platform** | ESP32 |
+| **AI Model** | YOLOv8 (Nano/Small) |
+| **Programming** | C++, Python |
+| **Vision** | OpenCV, dlib |
+| **Communication**| WebSockets, Serial |
+| **Control** | Wi-Fi |
+| **Drive** | Omnidirectional (Mecanum) |
+| **Status** | Research Prototype |
 
-## 🗺️ Roadmap
-
-### Version 1
-──────────
-✔ Remote Control
-✔ Camera
-✔ Live Streaming
-✔ AI Dashboard
-
-### Version 2
-──────────
-✔ Object Detection
-✔ Face Recognition
-□ Automated Event Recording
-
-### Version 3
-──────────
-□ Autonomous Patrol
-□ Smart Alerts (Telegram/AWS)
-□ Edge AI Optimization (Edge TPU)
-
-### Version 4
-──────────
-□ SLAM Mapping
-□ Multi-Robot Swarm Coordination
-□ Autonomous Charging Dock
+### Performance Estimates
+| Metric | Value |
+| :--- | :--- |
+| **Camera FPS** | ~15-20 FPS |
+| **Dashboard Latency** | ~100-150 ms |
+| **Detection Speed** | ~10-15 FPS (Host PC dependent) |
+| **Wi-Fi Range** | ~20–30 m |
+| **Battery Runtime** | ~40-60 min |
 
 ---
 
@@ -155,16 +146,53 @@ Li-ion Power Distribution
 ### Why Python Dashboard?
 * **Rapid development**: Fast iteration for UI and backend logic.
 * **AI integration**: Native support for OpenCV, PyTorch, and YOLO.
-* **Cross-platform**: Runs on Windows, Linux, and macOS without recompilation.
+* **Cross-platform**: Runs on Windows, Linux, and macOS.
+
+### Why Mecanum Wheels?
+* **Omnidirectional movement**: Essential for complex maneuvering in tight spaces.
+* **Better indoor navigation**: Allows strafing without rotating the chassis.
+* **Easy lateral movement**: Suitable for tracking targets while maintaining camera lock.
 
 ---
 
-## 🔬 Future Research
-* **Edge AI acceleration**: Moving YOLO inference directly to the rover using dedicated VPUs.
-* **Multi-camera coordination**: Data fusion from multiple Yugēn rovers in a swarm.
-* **Autonomous patrol planning**: AI-driven route optimization based on historical anomaly data.
-* **Sensor fusion**: Combining optical flow with IMU/LiDAR for robust odometry.
-* **Low-power optimization**: Sleep states and wake-on-motion for extended patrols.
+## ⚠️ Current Limitations
+Being transparent about the current state of the platform:
+* **Manual navigation only**: Autonomous pathing is still in development.
+* **Single camera**: Relies on a single fixed-angle ESP32-CAM.
+* **Requires Wi-Fi**: Needs an active network to stream to the host processing PC.
+* **No autonomous mapping**: SLAM is not yet implemented.
+* **Limited battery runtime**: Heavy motor usage drains the battery quickly.
+
+---
+
+## 🗺️ Roadmap Timeline
+
+```text
+V1 (Current)
+│
+├── Manual Control
+├── Camera Integration
+├── Live Streaming
+├── YOLO Dashboard
+│
+V2
+│
+├── Obstacle Avoidance
+├── Automated Event Recording
+├── Enhanced Telemetry
+│
+V3
+│
+├── Autonomous Patrol
+├── Smart Alerts (AWS/Telegram)
+├── Edge TPU Acceleration
+│
+V4
+│
+├── SLAM Mapping
+├── Swarm Robotics
+├── Docking & Autonomous Charging
+```
 
 ---
 
