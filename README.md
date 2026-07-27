@@ -136,7 +136,7 @@ Yugen/
 </p>
 
 <p align="center">
-  <img src="media/dashboard.png" width="800" alt="Dashboard View">
+  <img src="media/dashboard.jpeg" width="800" alt="Dashboard View">
 </p>
 
 ---
