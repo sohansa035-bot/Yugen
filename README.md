@@ -138,6 +138,9 @@ Yugen/
 <p align="center">
   <img src="media/dashboard.jpeg" width="800" alt="Dashboard View">
 </p>
+<p align="center">
+  <img src="media/ys.jpeg" width="800" alt="Dashboard View">
+</p>
 
 ---
 
